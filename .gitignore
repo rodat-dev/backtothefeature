@@ -1,2 +1,4 @@
 /deps
-/tmp
+/tmp/b2fdb
+.zig-cache
+/zig-out
