@@ -1,0 +1,7 @@
+2024/08/30-20:54:51.677479 0x1ebaabac0 Recovering log #24
+2024/08/30-20:54:51.678181 0x1ebaabac0 Level-0 table #26: started
+2024/08/30-20:54:51.683116 0x1ebaabac0 Level-0 table #26: 133 bytes OK
+2024/08/30-20:54:51.693850 0x1ebaabac0 Delete type=3 #22
+2024/08/30-20:54:51.693857 0x1ebaabac0 Delete type=0 #24
+2024/08/30-20:54:51.694368 0x16f3b3000 Compacting 4@0 + 0@1 files
+2024/08/30-20:54:51.694734 0x16f3b3000 compacted to: files[ 4 0 0 0 0 0 0 ]
