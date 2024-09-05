@@ -57,19 +57,18 @@ pub const LevelDb = struct {
     _err_msg: ?[*c]u8 = null,
 
     pub fn init(dbname: [*c]const u8) !@This() {
-        var this = LevelDb{};
+        const opts = try DatabaseOptions.init();
+        errdefer opts.deinit();
 
-        this._opts = try DatabaseOptions.init();
-        errdefer this._opts.deinit();
-
-        this._handle = c.leveldb_open(this._opts.base, dbname, @ptrCast(&this._err_msg));
-        if (this._err_msg) |msg| {
+        var err_msg: [*c]u8 = null;
+        const handle = c.leveldb_open(opts.base, dbname, @ptrCast(&err_msg));
+        if (err_msg) |msg| {
             defer c.leveldb_free(@ptrCast(msg));
             std.debug.print("[INIT] error: {s}\n", .{msg});
             return error.FailedToInitializeLevelDb;
         }
 
-        return this;
+        return .{ ._opts = opts, ._handle = handle };
     }
 
     pub fn deinit(this: @This()) void {
